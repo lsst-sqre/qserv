@@ -16,12 +16,7 @@ SSH_CFG="$PARENT_DIR/ssh_config"
 i=1
 for node in $WORKERS
 do
-    ssh -t -F "$SSH_CFG" "$node" 'sudo -b sh -c "sleep 1; init 6"'
-    while ssh -F "$SSH_CFG" "$node" "~/wait.sh"
-    do
-        echo "Waiting for $node to shutdown"
-        sleep 1
-    done
+    ssh -t -F "$SSH_CFG" "$node" 'sudo service docker restart'
     while ! ssh -F "$SSH_CFG" "$node" "~/wait.sh"
     do
         echo "Waiting for Qserv to start on $node"

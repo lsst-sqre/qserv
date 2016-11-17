@@ -54,6 +54,6 @@ then
     exit 1
 fi
 
-shmux -c "CONTAINER_ID=$(docker --latest=true --quiet) && docker cp $CONTAINER_ID:/qserv/data /tmp" $MASTER $WORKERS
+shmux -c 'CONTAINER_ID=$(docker ps --latest --quiet) && docker cp $CONTAINER_ID:/qserv/data /tmp' $MASTER $WORKERS
 shmux -c "sudo -S sh -c 'rm -rf \"$DEST_DIR\" && mv /tmp/data \"$DEST_DIR\" && chown -R qserv:qserv \"$DEST_DIR\"'" $MASTER $WORKERS
 
