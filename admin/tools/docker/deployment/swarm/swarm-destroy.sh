@@ -13,7 +13,7 @@ SSH_CFG="$DIR/ssh_config"
 for node in $SWARM_NODES
 do
     SWARM_LEADER=$(ssh -F "$SSH_CFG" "$node" \
-        "docker node ls | grep 'Leader' | awk '{print \$3}'")
+        "docker node ls | grep 'Leader' | sed 's/*//' | awk '{print \$2}'")
     if [ -n "${SWARM_LEADER}" ]; then
         break
     fi
