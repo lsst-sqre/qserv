@@ -65,7 +65,8 @@ xrd.port {{XROOTD_PORT}}
 
 # Optional: Prevent dns resolution in logs.
 # This may speed up request processing.
-xrd.network cache 0s nodnr
+xrd.network nodnr
+xrd.network cache 0
 
 # Uncomment the following line for detailed xrootd debugging
 # xrootd.trace all debug
