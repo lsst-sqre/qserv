@@ -19,6 +19,10 @@ if named master
     # Enable support for multiple writable file copies
     cms.space mwfiles linger 0
 
+    # Immediately kill the cache and forget about the
+    # host/ip address the moment is disconnects
+    cms.delay drop 1
+
 ############################
 # else: server nodes
 ############################
