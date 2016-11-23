@@ -21,6 +21,8 @@ if named master
 
     # Immediately kill the cache and forget about the
     # host/ip address the moment is disconnects
+    # Required by docker-swarm which changes
+    # hostname/ip address when restarting a swarm service
     cms.delay drop 1
 
 ############################
